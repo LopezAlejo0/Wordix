@@ -6,7 +6,7 @@ Introducción a la programación -
 Tecnicatura en desarrollo web - 
 Facultad de informática - 
 Universidad Nacional del Comahue - 
-Profesores: Luis Reynoso, Cristian Torres, Maria Monserrat, Facundo Muñoz
+Profesores: Luis Reynoso, Cristian Torres, Maria Monserrat, Facundo Muñoz - 
 Grupo: 16
 
 # Integrantes del grupo
