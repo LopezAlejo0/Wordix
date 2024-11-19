@@ -45,7 +45,7 @@ function seleccionarOpción () {
 
 
 
-
+//Este fragmento de codigo ya venia con la libreria de wordix;
 /**
  * Obtiene una colección de palabras
  * @return array
