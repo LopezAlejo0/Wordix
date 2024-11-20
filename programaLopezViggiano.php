@@ -63,22 +63,18 @@
      */
     function seleccionarOpción () {
         // int $opción
-        do {
-            echo "1) Jugar con una palabra determinada \n";
-            echo "2) Jugar con una palabra aleatoria \n";
-            echo "3) Mostrar una partida \n";
-            echo "4) Mostrar la primer partida ganadora \n";
-            echo "5) Mostrar estadísticas \n";
-            echo "6) Mostrar listado de partidas ordenadas por jugador y por palabras \n";
-            echo "7) Agregar una nueva palabra de 5 letras \n";
-            echo "8) Salir \n";
-            echo "Seleccione una opción: ";
-            $opción = trim (fgets (STDIN));
-            if (!($opción >= 1 && $opción <= 8)) {
-                echo "La opción no es válida, intente nuevamente"; // Cartel de error
-            }
-        } while (!($opción >= 1 && $opción <= 8)); // Si la opción se sale del rango, repetir el menú y volver a solicitar
-        return $opción;
+        echo "1) Jugar con una palabra determinada \n";
+        echo "2) Jugar con una palabra aleatoria \n";
+        echo "3) Mostrar una partida \n";
+        echo "4) Mostrar la primer partida ganadora \n";
+        echo "5) Mostrar estadísticas \n";
+        echo "6) Mostrar listado de partidas ordenadas por jugador y por palabras \n";
+        echo "7) Agregar una nueva palabra de 5 letras \n";
+        echo "8) Salir \n";
+        echo "Seleccione una opción: ";
+        // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú
+        $opcion = solicitarNumeroEntre (1, 8);
+        return $opcion;
     }
 
 
