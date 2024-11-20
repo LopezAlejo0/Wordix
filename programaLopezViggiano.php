@@ -8,7 +8,7 @@
     /**************************************/
 
     /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-    /* ****COMPLETAR***** */
+    /* ****COMPLETAR**** */
 
 
     /**************************************************/
