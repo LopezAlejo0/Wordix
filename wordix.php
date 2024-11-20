@@ -149,7 +149,7 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Esta funcion le solicita al usuario que ingrese una palabra de 5 letras y verifica que sea un string y tenga un maximo de 5 caracteres. Retorna la palabra
  */
 function leerPalabra5Letras()
 {

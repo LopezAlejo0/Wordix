@@ -84,26 +84,10 @@
 
 
     /**FUNCION 4
-     * Esta funcion le solicita al usuario que ingrese una palabra de 5 letras y retorna la misma
-     * @RETURN STRING
+     
      */
 
-    function ingresarPalabra() {
-        //STRING $palabra 
-        //Realizamos la verificacion de que la palabra ingresada tenga 5 letras
-        do {
-            echo "Ingrese una palabra de 5 letras: \n";
-            $palabra = trim(fgets(STDIN));
-
-            if (!(strlen($palabra) == 5)) {
-                echo "La palabra debe ser de 5 letras!";
-            }
-
-        } while (!(strlen($palabra) == 5));
-        
-        return $palabra;
-        
-    }
+    //ESTA FUNCION ESTA EN WORDIX LINEA 154 - 166
 
 
     /* ****COMPLETAR***** */
