@@ -206,7 +206,7 @@ function escribirTeclado($teclado)
         "Z", "X", "C", "V", "B", "N", "M", "salto"
     ];
 
-    foreach ($ordenTeclado as $letra) {
+    foreach ($ordenTeclado as $letra) { //Recorre ordenTeclado y va pintando las letras segun el estado (Si esta disponible o si ya las usaste)
         switch ($letra) {
             case 'salto':
                 echo "\n";
