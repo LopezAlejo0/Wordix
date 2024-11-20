@@ -174,8 +174,8 @@ function leerPalabra5Letras()
 
 
 /**
- * Inicia una estructura de datos Teclado. La estructura es de tipo: ¿Indexado, asociativo o Multidimensional?
- *@return array
+ * Inicia una estructura de datos Teclado. La estructura es de tipo: Asociativo
+ * @return array
  */
 function iniciarTeclado()
 {
