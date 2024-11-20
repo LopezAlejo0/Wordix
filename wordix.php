@@ -137,7 +137,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Recibe una cadena de caracteres y determina si dicha cadena es una palabra válida (es decir, se compone de letras del alfabeto). Retorna true si todas las letras son del alfabeto. En caso contrario, retorna false
+ * @param String $cadena
+ * @return boolean
  */
 function esPalabra($cadena)
 {
@@ -146,7 +148,7 @@ function esPalabra($cadena)
     $esLetra = true;
     $i = 0;
     while ($esLetra && $i < $cantCaracteres) {
-        $esLetra =  ctype_alpha($cadena[$i]);
+        $esLetra =  ctype_alpha($cadena[$i]); // La función invocada determina si el caracter es una letra del alfabeto
         $i++;
     }
     return $esLetra;
