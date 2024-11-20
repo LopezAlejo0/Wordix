@@ -85,6 +85,10 @@
 
     //ESTA FUNCION ESTA EN WORDIX LINEA 154 - 166
 
+    /**FUNCION 5 ya esta en el archivo wordix */
+
+    
+
 
     /* ****COMPLETAR***** */
 
