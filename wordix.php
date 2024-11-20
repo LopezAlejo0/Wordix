@@ -197,7 +197,7 @@ function iniciarTeclado()
  */
 function escribirTeclado($teclado)
 {
-    //array $ordenTeclado (arreglo indexado con el orden en que se debe escribir el teclado en pantalla)
+    //array $ordenTeclado (arreglo indexado con el orden en que se debe escribir el teclado en pantalla). Invoca la funcion escribirSegunEstado
     //string $letra, $estado
     $ordenTeclado = [
         "salto",
