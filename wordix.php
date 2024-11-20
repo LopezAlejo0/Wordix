@@ -97,9 +97,9 @@ function escribirNormal($texto)
 }
 
 /**
- * Escribe un texto en pantalla teniendo en cuenta el estado.
+ * Escribe un texto en pantalla teniendo en cuenta el estado (CONSTANTES LINEA 20-23).
  * @param string $texto
- * @param string $estado
+ * @param string $estado 
  */
 function escribirSegunEstado($texto, $estado)
 {
@@ -123,7 +123,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ *Recibe por parametro un usuario y muestra un cartel de bienvenida.
+ *@param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
