@@ -156,15 +156,16 @@ function esPalabra($cadena)
 
 /**
  * Esta funcion le solicita al usuario que ingrese una palabra de 5 letras y verifica que sea un string y tenga un maximo de 5 caracteres. Retorna la palabra
+ * @return string
  */
 function leerPalabra5Letras()
 {
     //string $palabra
     echo "Ingrese una palabra de 5 letras: ";
     $palabra = trim(fgets(STDIN));
-    $palabra  = strtoupper($palabra);
+    $palabra  = strtoupper($palabra); //Convierte la palabra a mayusculas
 
-    while ((strlen($palabra) != 5) || !esPalabra($palabra)) {
+    while ((strlen($palabra) != 5) || !esPalabra($palabra)) {//La funcion invocada esPalabra determina si la cadena ingresada es una palabra valida.
         echo "Debe ingresar una palabra de 5 letras:";
         $palabra = strtoupper(trim(fgets(STDIN)));
     }
