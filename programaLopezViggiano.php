@@ -90,7 +90,7 @@
 
     function ingresarPalabra() {
         //STRING $palabra 
-        //Realizamos la verificacion de que la palabra ingresada tenga 5 letras.
+        //Realizamos la verificacion de que la palabra ingresada tenga 5 letras
         do {
             echo "Ingrese una palabra de 5 letras: \n";
             $palabra = trim(fgets(STDIN));
