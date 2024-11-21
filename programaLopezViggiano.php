@@ -83,7 +83,21 @@
      * La función está en wordix.php (lineas 35-49)
      */
 
-    
+    /** FUNCIÓN 6
+     * Recibe un número de partida y muestra por pantalla los datos de dicha partida
+     * @param array $colecciónPartida
+     * @param int $numPartida
+     */
+    function mostrarPartida ($coleccionPartida, $numPartida) {
+        // array $partida
+        $partida = $coleccionPartida[$numPartida];
+        if ($partida["intentos"] > 0) {
+            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos";
+        }
+        else {
+           echo "Partida WORDIX " . $numPartida . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
+        }
+    }
 
 
     /* ****COMPLETAR***** */
