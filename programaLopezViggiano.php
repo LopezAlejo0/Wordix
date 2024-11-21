@@ -15,8 +15,8 @@
     /***** DEFINICIÓN DE FUNCIONES PRINCIPALES ********/
     /**************************************************/
 
-    /** FUNCION 1 
-     * Explicacion 3 (punto 1)
+    /** FUNCIÓN 1 
+     * Explicación 3 (punto 1)
      * Obtiene una colección de palabras de 5 letras y devuelve el arreglo
      * @return array
      */
@@ -29,34 +29,30 @@
             "TERMO", "ARBOL", "CIELO", "NOCHE", "PLAZA"
             
         ];
-
         return ($coleccionPalabras); 
     }
 
-        /** FUNCION 2
-         * Explicacion 3 (punto 2)
-         * Esta funcion inicializa una estructura de datos y retorna la coleccion
+        /** FUNCIÓN 2
+         * Explicación 3 (punto 2)
+         * Esta función inicializa una estructura de datos y retorna la colección
      * @RETUR ARRAY  */ 
     function cargarPartidas(){
         //ARRAY $coleccionPartidas
-        $coleccionPartidas[0] = ["palabraWordix" => "QUESO", "jugador" => "Alejo", "intentos" => 0, "puntaje" => 0];
+        $coleccionPartidas[0] = ["palabraWordix" => "QUESO", "jugador" => "Alejo", "intentos" => 3, "puntaje" => 0];
         $coleccionPartidas[1] = ["palabraWordix" => "MUJER", "jugador" => "Frescia", "intentos" => 3, "puntaje" => 12];
         $coleccionPartidas[2] = ["palabraWordix" => "PIANO", "jugador" => "Veronica", "intentos" => 2, "puntaje" => 0];
-        $coleccionPartidas[3] = ["palabraWordix" => "CIELO", "jugador" => "Lisandro", "intentos" => 0, "puntaje" => 0];
-        $coleccionPartidas[4] = ["palabraWordix" => "PLAZA", "jugador" => "Paula", "intentos" => 0, "puntaje" => 0];
-        $coleccionPartidas[5] = ["palabraWordix" => "ARBOL", "jugador" => "Paula", "intentos" => 2, "puntaje" => 14];
+        $coleccionPartidas[3] = ["palabraWordix" => "CIELO", "jugador" => "Lisandro", "intentos" => 5, "puntaje" => 0];
+        $coleccionPartidas[4] = ["palabraWordix" => "PLAZA", "jugador" => "Paula", "intentos" => 2, "puntaje" => 0];
+        $coleccionPartidas[5] = ["palabraWordix" => "ARBOL", "jugador" => "Paula", "intentos" => 2, "puntaje" => 8];
         $coleccionPartidas[6] = ["palabraWordix" => "TERMO", "jugador" => "Alejo", "intentos" => 1, "puntaje" => 5];
         $coleccionPartidas[7] = ["palabraWordix" => "VERDE", "jugador" => "Genoveva", "intentos" => 4, "puntaje" => 22];
-        $coleccionPartidas[8] = ["palabraWordix" => "GOTAS", "jugador" => "Roberto", "intentos" => 0, "puntaje" => 0];
-        $coleccionPartidas[9] = ["palabraWordix" => "HUEVO", "jugador" => "Ana", "intentos" => 0, "puntaje" => 0];
-        $coleccionPartidas[10] = ["palabraWordix" => "GATOS", "jugador" => "Alejo", "intentos" => 1, "puntaje" => 10];
-
-
+        $coleccionPartidas[8] = ["palabraWordix" => "GOTAS", "jugador" => "Roberto", "intentos" => 8, "puntaje" => 0];
+        $coleccionPartidas[9] = ["palabraWordix" => "HUEVO", "jugador" => "Ana", "intentos" => 4, "puntaje" => 0];
+        $coleccionPartidas[10] = ["palabraWordix" => "GATOS", "jugador" => "Alejo", "intentos" => 1, "puntaje" => 6];
         return $coleccionPartidas;
-
     }
 
-    /** FUNCION 3
+    /** FUNCIÓN 3
      * Explicación 3 (punto 3)
      * Muestra por pantalla un menú con las opciones disponibles para el jugador
      * @return int
@@ -77,15 +73,15 @@
         return $opcion;
     }
 
-
-
-    /**FUNCION 4
-     
+    /** FUNCIÓN 4
+     *  Explicación 3 (punto 4)
+     * La función está en wordix.php (lineas 153-163)
      */
 
-    //ESTA FUNCION ESTA EN WORDIX LINEA 154 - 166
-
-    /**FUNCION 5 ya esta en el archivo wordix */
+    /** FUNCIÓN 5
+     * Explicación 3 (punto 5)
+     * La función está en wordix.php (lineas 35-49)
+     */
 
     
 
