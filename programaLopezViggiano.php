@@ -229,8 +229,9 @@
         do {
             echo "Ingrese el nombre del jugador: ";
             $nombre = trim (fgets (STDIN));
-        if (ctype_alpha (substr (0, 1))) {
+        if (ctype_alpha (substr ($nombre, 0, 1))) { // Verifica que el primer caracter de la cadena sea una letra del alfabeto
             $nombre = strtolower ($nombre);
+            $resultado = true;
         }
         else {
             echo "Ingrese un nombre válido....";
