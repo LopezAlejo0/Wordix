@@ -229,17 +229,51 @@
         do {
             echo "Ingrese el nombre del jugador: ";
             $nombre = trim (fgets (STDIN));
-        if (ctype_alpha (substr ($nombre, 0, 1))) { // Verifica que el primer caracter de la cadena sea una letra del alfabeto
-            $nombre = strtolower ($nombre);
-            $resultado = true;
-        }
-        else {
-            echo "Ingrese un nombre válido....";
-        }
-        } while ($resultado == false);
-        return $nombre;
+            if (ctype_alpha (substr ($nombre, 0, 1))) { // Verifica que el primer caracter de la cadena sea una letra del alfabeto
+                $nombre = strtolower ($nombre);
+                $resultado = true;
+            }
+            else {
+                echo "Ingrese un nombre válido....";
+            }
+            } while ($resultado == false);
+            return $nombre;
       }
 
+    /**FUNCION 11
+     * Recibe por paramentros la colección de partidas, muestra la colección de partidas ordenada por el nombre del jugador y por la palabra.
+     */
+
+     /**Esta funcion compara los nombres del array, los ordena alfabeticamente y luego ordena segun el nombre   las palabras lexicograficamente. Devuelve un valor entero.
+      * Si la cadena es identica (a==b) retorna 0, si a < b retorna -1 y si a > b retorna 1.
+      * @param string $cadena1
+      * @param string $cadena2
+      * @return int
+      */
+
+      function comparadorCadenas($cadena1, $cadena2) {
+        // int $resultado
+
+        $resultado = strcmp($cadena1["jugador"], $cadena2["jugador"]);
+
+        if ($resultado == 0) {
+            $resultado = strcmp($caden1["palabraWordix"], $cadena2["palabraWordix"]);
+
+        }
+
+        return $resultado;
+      }
+
+      /**Ordena alfabeticamente los strings ingresados
+       * @param array $coleccionPartidas
+       */
+
+       function ordenaAlfabeticamente($coleccionPartida) {
+        uasort($coleccionPartida, 'comparadorCadenas'); //Ejecuta la funcion comparadorCadenas la cual ordena propiamente por orden alfabetico el nombre y la palabra. comparadorCadenas esta entre comillas porque se trata de una referencia de esa funcion y no de su ejecucion directa.
+        print_r($coleccionPartida); //Imprime el array ordenado 
+       }
+
+     
 
     /* ****COMPLETAR***** */
 
