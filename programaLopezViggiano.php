@@ -218,6 +218,27 @@
         
     }
 
+    /** FUNCIÓN 10
+     * Solicita el nombre de un jugador para ese nombre con letras minusculas. Verifica que el primer caracter sea una letra.
+     * @return String
+     */
+    function solicitarJugador () {
+        // boolean $resultado
+        // String $nombre
+        $resultado = false;
+        do {
+            echo "Ingrese el nombre del jugador: ";
+            $nombre = trim (fgets (STDIN));
+        if (ctype_alpha (substr (0, 1))) {
+            $nombre = strtolower ($nombre);
+        }
+        else {
+            echo "Ingrese un nombre válido....";
+        }
+        } while ($resultado == false);
+        return $nombre;
+      }
+
 
     /* ****COMPLETAR***** */
 
