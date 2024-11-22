@@ -257,7 +257,7 @@
         $resultado = strcmp($cadena1["jugador"], $cadena2["jugador"]);
 
         if ($resultado == 0) {
-            $resultado = strcmp($caden1["palabraWordix"], $cadena2["palabraWordix"]);
+            $resultado = strcmp($cadena1["palabraWordix"], $cadena2["palabraWordix"]);
 
         }
 
