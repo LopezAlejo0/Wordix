@@ -84,6 +84,7 @@
      */
 
     /** FUNCIÓN 6
+     * Explicación 3 (punto 6)
      * Recibe un número de partida y muestra por pantalla los datos de dicha partida
      * @param array $colecciónPartida
      * @param int $numPartida
@@ -101,6 +102,31 @@
            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
            echo "********************************** \n";
         }
+    }
+
+    /** FUNCIÓN 7
+     * Explicación 3 (punto 7)
+     * Recibe una colección de palabras y una palabra ingresada de 5 letras. Determina si la palabra ingresda ya se encuentra en la colección.
+     * Retorna la colección de palabras con la nueva palabra (siempre y cuando, esta no se encuentre desde antes).
+     * @param array $palabras
+     * @param String $palabraIngresada
+     * @return array
+     */
+    function agregarPalabra ($palabras, $palabraIngresada) {
+        // int $i, $cantPalabras
+        $i = 0;
+        $cantPalabras = count ($palabras);
+        while ($i < $cantPalabras && $palabras[$i] != $palabraIngresada) {
+            $i ++;
+        }
+        if ($i >= $cantPalabras) {
+            $palabras[$cantPalabras] = $palabraIngresada;
+            echo "Se agregó la palabra " . $palabraIngresada . "\n";
+        }
+        else {
+            echo "La palabra " . $palabraIngresada . " ya existe \n";
+        }
+        return $palabras;
     }
 
 
