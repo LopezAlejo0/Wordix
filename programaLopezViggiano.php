@@ -272,25 +272,25 @@
         uasort($coleccionPartida, 'comparadorCadenas'); //Ejecuta la funcion comparadorCadenas la cual ordena propiamente por orden alfabetico el nombre y la palabra. comparadorCadenas esta entre comillas porque se trata de una referencia de esa funcion y no de su ejecucion
         print_r($coleccionPartida); //Imprime el array ordenado 
        }
-
-     
+ 
 
     /* ****COMPLETAR***** */
-
-
 
     /**************************************/
     /*********** PROGRAMA PRINCIPAL *******/
     /**************************************/
 
     //Declaración de variables:
-
+       //ARRAY $juego, $palabras
 
     //Inicialización de variables:
 
 
     //Proceso:
 
+    $juego = cargarPartidas();
+    $palabras = cargarColeccionPalabras();
+    
     $partida = jugarWordix("MELON", strtolower("MaJo"));
     //print_r($partida);
     //imprimirResultado($partida);
