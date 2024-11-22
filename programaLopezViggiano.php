@@ -153,6 +153,71 @@
        return $j;
     }
 
+    /**FUNCIÓN 9 
+     * Esta función recibe un arreglo por parametros y el nombre del jugador. Devuelve el resumen del jugador
+     * Utilizará una estructura asociativa para almacenar el resumen de un jugador que   *tendrá los siguientes
+     *datos: jugador, partidas, puntaje, victorias, intento1, intento2, intento3, *intento4, intento5, intento6.
+     * @param array $coleccionPartida
+     * @param string $nombre
+     * @return array
+    */
+
+    function resumenJugador($coleccionPartida, $nombre) {
+        //int $n, $i, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6, $victorias, $partidas, $puntaje;
+        //array $estadistica;
+        $n = count($coleccionPartida);
+        $i = 0;
+        $intento1 = 0;
+        $intento2 = 0;
+        $intento3 = 0;
+        $intento4 = 0;
+        $intento5 = 0;
+        $intento6 = 0;
+        $victorias = 0;
+        $partidas = 0;
+        $jugador = $nombre;
+        $puntaje = 0;
+        $estadistica = [];
+
+        for ($i=0; $i < $n ; $i++) { 
+            if ($coleccionPartida[$i]["jugador"] == $nombre) {
+                $partidas++;
+                $puntaje = $puntaje + $coleccionPartida[$i]["puntaje"];
+                if ($coleccionPartida[$i]["puntaje"] > 0) {
+                    $victorias++;
+                }
+
+                switch ($coleccionPartida[$i]["intento"]) {
+                    case 1:
+                        $intento1++;
+                        break;
+                    case 2:
+                        $intento2++;
+                        break;
+                    case 3:
+                        $intento3++;
+                        break;
+                    case 4:
+                        $intento4++;
+                        break;
+                    case 5:
+                        $intento5++;
+                        break;
+                    case 6:
+                        $intento6++;
+                        break;
+                    
+                }
+
+            }
+        }
+
+        $estadistica = ["jugador" => $nombre, "partidas" => $partidas, "puntaje" => $puntaje, "victorias" => $victorias, "intento1" => $intento1, "intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,];
+
+        return $estadistica;
+        
+    }
+
 
     /* ****COMPLETAR***** */
 
