@@ -269,7 +269,7 @@
        */
 
        function ordenaAlfabeticamente($coleccionPartida) {
-        uasort($coleccionPartida, 'comparadorCadenas'); //Ejecuta la funcion comparadorCadenas la cual ordena propiamente por orden alfabetico el nombre y la palabra. comparadorCadenas esta entre comillas porque se trata de una referencia de esa funcion y no de su ejecucion directa.
+        uasort($coleccionPartida, 'comparadorCadenas'); //Ejecuta la funcion comparadorCadenas la cual ordena propiamente por orden alfabetico el nombre y la palabra. comparadorCadenas esta entre comillas porque se trata de una referencia de esa funcion y no de su ejecucion
         print_r($coleccionPartida); //Imprime el array ordenado 
        }
 
