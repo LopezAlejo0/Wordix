@@ -92,10 +92,14 @@
         // array $partida
         $partida = $coleccionPartida[$numPartida];
         if ($partida["puntaje"] > 0) {
+            echo "********************************** \n";
             echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos";
+            echo "********************************** \n";
         }
         else {
+            echo "********************************** \n";
            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
+           echo "********************************** \n";
         }
     }
 
