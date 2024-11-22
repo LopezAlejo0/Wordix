@@ -117,7 +117,7 @@
         $i = 0;
         $cantPalabras = count ($palabras);
         while ($i < $cantPalabras && $palabras[$i] != $palabraIngresada) {
-            $i ++;
+            $i++;
         }
         if ($i >= $cantPalabras) {
             $palabras[$cantPalabras] = $palabraIngresada;
@@ -127,6 +127,30 @@
             echo "La palabra " . $palabraIngresada . " ya existe \n";
         }
         return $palabras;
+    }
+
+    /**FUNCIÓN 8 
+     * Explicación 3 (punto 8)
+     * Recibe la coleccion de partidas y el nombre del jugador. Retorna el indice de la primer partida ganada por el jugador, si no gano ninguna retorna -1.
+     * @param array $coleccionPartida
+     * @param string $nombre
+     * @return int
+    */
+
+    function partidaGanada($coleccionPartida, $nombre) {
+        //int $n, $i, $j;
+        $n = count($coleccionPartida);
+        $i = 0;
+        $j = -1;
+        
+        while ($i <$n && ($coleccionPartida[$i]["jugador"] != $nombre || $coleccionPartida[$i]["puntaje"] < 1)) {
+            $i++;
+        }
+
+        if ($coleccionPartida[$i]["puntaje"] >0) {
+            $j = $i;
+        }
+       return $j;
     }
 
 
