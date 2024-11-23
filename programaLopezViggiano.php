@@ -69,7 +69,7 @@
         echo "7) Agregar una nueva palabra de 5 letras \n";
         echo "8) Salir \n";
         echo "Seleccione una opción: \n";
-        echo "************************************************************************\n";
+        
         // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú
         $opcion = solicitarNumeroEntre (1, 8);
         return $opcion;
