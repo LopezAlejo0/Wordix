@@ -322,13 +322,50 @@ function esIntentoGanado ($estructuraPalabraIntento) {
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * Calcula el puntaje total de una partida ganada de Wordix
+ * @param int $intentosUsados cantidad de intentos que necesitó el jugador para ganar
+ * @param string $palabraGanadora palabra con la que ganó el jugador
+ * @return int puntaje total obtenido
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
-{
+function obtenerPuntajeWordix($intentosUsados, $palabraGanadora) {
+    //int $totalPuntaje, $puntosIntentos, $puntosLetra
+    //char $letraActual
+    //array $palabraDesc
 
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+    //Inicializamos total puntaje
+    $totalPuntaje = 0;
+
+    //Inicializamos puntaje base segun intentos restantes (maximo 6 intentos)
+    $puntosIntentos = 7 - $intentosUsados;
+
+    //Convertimos palabra en array de letras
+    $palabraDesc = str_split($palabraGanadora);
+
+    //Inicializamos el acumulador de puntos por letra en cero
+    $puntosLetra = 0;
+
+    //Calculamos el puntaje por cada letra
+    //Vocales: 1 punto
+    //Consonantes de la A-M: 2 puntos
+    //Consonantes de la N-Z: 3 puntos
+
+    for ($i=0; $i < 5 ; $i++) { 
+        //Letra que va comparando
+        $letraActual = $palabraDesc[$i];
+
+        if ($letraActual == "A" || $letraActual == "E" || $letraActual == "I" || $letraActual == "O" || $letraActual == "U") {
+            $puntosLetra += 1;
+        } elseif ($letraActual <= "M") {
+            $puntosLetra += 2;
+        } else {
+            $puntosLetra += 3;
+        }
+    }
+
+    //Puntaje total
+    $totalPuntaje = $puntosIntentos + $puntosLetra;
+    return $totalPuntaje;
+    
 }
 
 /**
@@ -363,7 +400,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($indiceIntento, $palabraWordix);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento

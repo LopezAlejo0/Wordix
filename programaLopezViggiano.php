@@ -38,17 +38,17 @@
      * @RETUR ARRAY  */ 
     function cargarPartidas () {
         //ARRAY $coleccionPartidas
-        $coleccionPartidas[0] = ["palabraWordix" => "QUESO", "jugador" => "Alejo", "intentos" => 4, "puntaje" => 12];
-        $coleccionPartidas[1] = ["palabraWordix" => "MUJER", "jugador" => "Frescia", "intentos" => 1, "puntaje" => 15];
-        $coleccionPartidas[2] = ["palabraWordix" => "PIANO", "jugador" => "Veronica", "intentos" => 5, "puntaje" => 11];
-        $coleccionPartidas[3] = ["palabraWordix" => "CIELO", "jugador" => "Lisandro", "intentos" => 6, "puntaje" => 0];
-        $coleccionPartidas[4] = ["palabraWordix" => "PLAZA", "jugador" => "Paula", "intentos" => 2, "puntaje" => 15];
-        $coleccionPartidas[5] = ["palabraWordix" => "ARBOL", "jugador" => "Paula", "intentos" => 6, "puntaje" => 10];
-        $coleccionPartidas[6] = ["palabraWordix" => "TERMO", "jugador" => "Alejo", "intentos" => 3, "puntaje" => 14];
-        $coleccionPartidas[7] = ["palabraWordix" => "VERDE", "jugador" => "Genoveva", "intentos" => 6, "puntaje" => 0];
-        $coleccionPartidas[8] = ["palabraWordix" => "GOTAS", "jugador" => "Roberto", "intentos" => 1, "puntaje" => 16];
-        $coleccionPartidas[9] = ["palabraWordix" => "HUEVO", "jugador" => "Ana", "intentos" => 4, "puntaje" => 11];
-        $coleccionPartidas[10] = ["palabraWordix" => "GATOS", "jugador" => "Alejo", "intentos" => 6, "puntaje" => 0];
+        $coleccionPartidas[0] = ["palabraWordix" => "QUESO", "jugador" => "alejo", "intentos" => 4, "puntaje" => 12];
+        $coleccionPartidas[1] = ["palabraWordix" => "MUJER", "jugador" => "frescia", "intentos" => 1, "puntaje" => 15];
+        $coleccionPartidas[2] = ["palabraWordix" => "PIANO", "jugador" => "veronica", "intentos" => 5, "puntaje" => 11];
+        $coleccionPartidas[3] = ["palabraWordix" => "CIELO", "jugador" => "lisandro", "intentos" => 6, "puntaje" => 0];
+        $coleccionPartidas[4] = ["palabraWordix" => "PLAZA", "jugador" => "paula", "intentos" => 2, "puntaje" => 15];
+        $coleccionPartidas[5] = ["palabraWordix" => "ARBOL", "jugador" => "paula", "intentos" => 6, "puntaje" => 10];
+        $coleccionPartidas[6] = ["palabraWordix" => "TERMO", "jugador" => "alejo", "intentos" => 3, "puntaje" => 14];
+        $coleccionPartidas[7] = ["palabraWordix" => "VERDE", "jugador" => "genoveva", "intentos" => 6, "puntaje" => 0];
+        $coleccionPartidas[8] = ["palabraWordix" => "GOTAS", "jugador" => "roberto", "intentos" => 1, "puntaje" => 16];
+        $coleccionPartidas[9] = ["palabraWordix" => "HUEVO", "jugador" => "ana", "intentos" => 4, "puntaje" => 11];
+        $coleccionPartidas[10] = ["palabraWordix" => "GATOS", "jugador" => "alejo", "intentos" => 6, "puntaje" => 0];
         return $coleccionPartidas;
     }
 
@@ -59,15 +59,17 @@
      */
     function seleccionarOpción () {
         // int $opción
-        echo "1) Jugar con una palabra determinada \n";
-        echo "2) Jugar con una palabra aleatoria \n";
+        echo "************************************************************************\n";
+        echo "1) Jugar Wordix con una palabra elegida \n";
+        echo "2) Jugar Wordix con una palabra aleatoria \n";
         echo "3) Mostrar una partida \n";
         echo "4) Mostrar la primer partida ganadora \n";
         echo "5) Mostrar estadísticas \n";
         echo "6) Mostrar listado de partidas ordenadas por jugador y por palabras \n";
         echo "7) Agregar una nueva palabra de 5 letras \n";
         echo "8) Salir \n";
-        echo "Seleccione una opción: ";
+        echo "Seleccione una opción: \n";
+        echo "************************************************************************\n";
         // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú
         $opcion = solicitarNumeroEntre (1, 8);
         return $opcion;
@@ -273,7 +275,49 @@
         print_r($coleccionPartida); //Imprime el array ordenado 
        }
  
+    /**
+    * Permite al jugador elegir una palabra no jugada
+    * @param string $nombre nombre del jugador
+    * @param array $coleccionPalabras array de palabras disponibles
+    * @param array $historialPartidas array de partidas jugadas
+    * @return string palabra seleccionada
+    */
+    function elegirPalabra($nombre, $coleccionPalabras, $historialPartidas) {
+        //int $totalPalabras  
+        $totalPalabras = count($coleccionPalabras);
 
+        do {
+        
+            echo "Ingrese un numero de palabra: ";
+            $num = solicitarNumeroEntre (0, $totalPalabras - 1);
+            $palabraSeleccionada = $coleccionPalabras[$num];
+            $repetida = palabraRepetida($nombre, $palabraSeleccionada, $historialPartidas);
+            if ($repetida) {
+             echo "Número de palabra no válido, ya jugaste con esa palabra, intente nuevamente \n";
+            }
+            else {
+                echo "Puede jugar con esa palabra \n";
+            }
+        } while ($repetida);
+
+        return $palabraSeleccionada;
+    }
+
+   
+
+    function palabraRepetida($nombre, $palabra, $historial){
+            
+            $encontrada = false;
+    
+            foreach($historial as $partida) {
+                if ($partida["jugador"] == $nombre && $partida["palabraWordix"] == $palabra) {
+                    $encontrada = true;
+                }
+                
+            }
+
+        return $encontrada;
+    }
     /* ****COMPLETAR***** */
 
     /**************************************/
@@ -288,24 +332,24 @@
 
     //Proceso:
 
-    $juego = cargarPartidas();
+    $juego = cargarPartidas(); 
     $palabras = cargarColeccionPalabras();
     
     $partida = jugarWordix("MELON", strtolower("MaJo"));
     //print_r($partida);
     //imprimirResultado($partida);
 
-
-
-    /*
     do {
-        $opcion = ...;
+        //Invoca al menu y guarda la opcion seleccionada
+        $opcionMenu = seleccionarOpción();
 
-        
-        switch ($opcion) {
+        switch ($opcionMenu) {
             case 1: 
-                //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-
+                $nombre = solicitarJugador();
+                $palabraElegida = elegirPalabra($nombre,$palabras,$juego);
+                $partida = jugarWordix($palabraElegida, $nombre);
+                //Agregamos la nueva partida al array de partidas
+                $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
                 break;
             case 2: 
                 //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
@@ -318,8 +362,8 @@
             
                 //...
         }
-    } while ($opcion != X);
-    */
+    } while ($opcionMenu != 8); 
+    
 
 
 
