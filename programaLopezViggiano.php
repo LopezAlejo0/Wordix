@@ -416,6 +416,12 @@
                 $resumen = resumenJugador ($juego, $jugador);
                 mostrarResumen ($resumen);
                 break;
+            case 6: // Mostrar listado de partidas ordenadas por jugador y por palabra.
+                echo "********************************** \n";
+                echo "Listado de partidas: \n";
+                ordenaAlfabeticamente ($juego);
+                echo "********************************** \n";
+                break;
         }
     } while ($opcionMenu != 8); 
     
