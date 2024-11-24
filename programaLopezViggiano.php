@@ -57,7 +57,7 @@
      */
     function seleccionarOpción () {
         // int $opción
-        echo "************************************************************************\n";
+        
         echo "1) Jugar Wordix con una palabra elegida \n";
         echo "2) Jugar Wordix con una palabra aleatoria \n";
         echo "3) Mostrar una partida \n";
@@ -93,12 +93,12 @@
         $partida = $coleccionPartida[$numPartida];
         if ($partida["puntaje"] > 0) {
             echo "********************************** \n";
-            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos";
+            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
             echo "********************************** \n";
         }
         else {
             echo "********************************** \n";
-           echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
+           echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra. \n";
            echo "********************************** \n";
         }
     }
@@ -217,14 +217,14 @@
         // String $nombre
         $resultado = false;
         do {
-            echo "Ingrese el nombre del jugador: ";
+            echo "Ingrese el nombre del jugador: \n";
             $nombre = trim (fgets (STDIN));
             if (ctype_alpha (substr ($nombre, 0, 1))) { // Verifica que el primer caracter de la cadena sea una letra del alfabeto
                 $nombre = strtolower ($nombre);
                 $resultado = true;
             }
             else {
-                echo "Ingrese un nombre válido....";
+                echo "Ingrese un nombre válido.... \n";
             }
             } while ($resultado == false);
             return $nombre;
@@ -278,7 +278,7 @@
         //int $totalPalabras  
         $totalPalabras = count ($coleccionPalabras);
         do {
-            echo "Ingrese un numero de palabra: ";
+            echo "Ingrese un numero de palabra: \n";
             $num = solicitarNumeroEntre (0, $totalPalabras - 1);
             $palabraSeleccionada = $coleccionPalabras[$num];
             $repetida = palabraRepetida ($nombre, $palabraSeleccionada, $historialPartidas);
@@ -339,12 +339,12 @@
         echo "Partidas: " . $estadisticasJugador["partidas"] . "\n";
         echo "Puntaje total: " . $estadisticasJugador["puntaje"] . "\n";
         echo "Adivinadas: \n";
-        echo "  Intento 1: " . $estadisticasJugador["intento1"];
-        echo "  Intento 2: " . $estadisticasJugador["intento2"];
-        echo "  Intento 3: " . $estadisticasJugador["intento3"];
-        echo "  Intento 4: " . $estadisticasJugador["intento4"];
-        echo "  Intento 5: " . $estadisticasJugador["intento5"];
-        echo "  Intento 6: " . $estadisticasJugador["intento6"];
+        echo "  Intento 1: " . $estadisticasJugador["intento1"] . "\n";
+        echo "  Intento 2: " . $estadisticasJugador["intento2"] . "\n";
+        echo "  Intento 3: " . $estadisticasJugador["intento3"] . "\n";
+        echo "  Intento 4: " . $estadisticasJugador["intento4"] . "\n";
+        echo "  Intento 5: " . $estadisticasJugador["intento5"] . "\n";
+        echo "  Intento 6: " . $estadisticasJugador["intento6"] . "\n";
         echo "********************************** \n";
     }
 
@@ -384,12 +384,27 @@
                 break;
             case 3: // Mostrar una partida.
                 $totalPartidas = count ($juego);
-                echo "Ingrese un número de partida: ";
+                echo "Ingrese un número de partida: \n";
                 $nroPartida = trim (fgets (STDIN));
                 solicitarNumeroEntre (0, $totalPartidas - 1);
                 mostrarPartida ($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
+                $nombre = solicitarJugador();
+                $primerPartidaGanada = partidaGanada($juego, $nombre);
+                echo "*********************************************************** \n";
+                if ($primerPartidaGanada > -1) {
+                    echo "Partida Wordix " . $primerPartidaGanada . ": palabra " . $juego[$primerPartidaGanada]["palabraWordix"] . " \n";
+                    
+                    echo "Jugador: " . $juego[$primerPartidaGanada]["jugador"] . " \n";
+                    echo "Puntaje: " . $juego[$primerPartidaGanada]["puntaje"] . " \n";
+                    echo "Intento: Adivino la palabra en " . $juego[$primerPartidaGanada]["intentos"] . " intentos \n";
+                } elseif ($primerPartidaGanada == -1) {
+                    echo "El jugador " . $nombre . " no gano ninguna partida \n";
+                } else {
+                    echo "El jugador " . $nombre . " no jugo ninguna partida \n";
+                }
+                echo "*********************************************************** \n" ;
                 break;
             case 5: // Mostrar las estadísticas de un jugador.
                 $jugador = solicitarJugador ();
