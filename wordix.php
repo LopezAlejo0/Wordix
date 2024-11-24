@@ -322,26 +322,26 @@ function esIntentoGanado ($estructuraPalabraIntento) {
 }
 
 /**
- * Calcula el puntaje total de una partida ganada de Wordix
+ * Calcula el puntaje total de una partida ganada de Wordix.
  * @param int $intentosUsados cantidad de intentos que necesitó el jugador para ganar
  * @param string $palabraGanadora palabra con la que ganó el jugador
  * @return int puntaje total obtenido
  */
 function obtenerPuntajeWordix($intentosUsados, $palabraGanadora) {
-    //int $totalPuntaje, $puntosIntentos, $puntosLetra
-    //char $letraActual
-    //array $palabraDesc
+    // int $totalPuntaje, $puntosIntentos, $puntosLetra
+    // char $letraActual
+    // array $palabraDesc
 
-    //Inicializamos total puntaje
+    //Inicializamos total puntaje.
     $totalPuntaje = 0;
 
-    //Inicializamos puntaje base segun intentos restantes (maximo 6 intentos)
+    //Inicializamos puntaje base según intentos restantes (maximo 6 intentos).
     $puntosIntentos = 7 - $intentosUsados;
 
-    //Convertimos palabra en array de letras
-    $palabraDesc = str_split($palabraGanadora);
+    //Convertimos palabra en array de letras.
+    $palabraDesc = str_split ($palabraGanadora);
 
-    //Inicializamos el acumulador de puntos por letra en cero
+    //Inicializamos el acumulador de puntos por letra en cero.
     $puntosLetra = 0;
 
     //Calculamos el puntaje por cada letra
@@ -354,7 +354,7 @@ function obtenerPuntajeWordix($intentosUsados, $palabraGanadora) {
         $letraActual = $palabraDesc[$i];
 
         if ($letraActual == "A" || $letraActual == "E" || $letraActual == "I" || $letraActual == "O" || $letraActual == "U") {
-            $puntosLetra += 1;
+            $puntosLetra ++;
         } elseif ($letraActual <= "M") {
             $puntosLetra += 2;
         } else {
