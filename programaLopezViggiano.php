@@ -368,11 +368,10 @@
     /**************************************/
 
     //Declaración de variables:
-    //RRAY $juego, $palabras
     /**
      * array $juego, $palabras, $partida
      * int $opcionMenu, $totalPartidas, $nroPartida
-     * String $jugador, $palabraElegida
+     * String $jugador, $palabraElegida, $palabra5Letras
      */
 
     //Inicialización de variables:
@@ -421,6 +420,10 @@
                 echo "Listado de partidas: \n";
                 ordenaAlfabeticamente ($juego);
                 echo "********************************** \n";
+                break;
+            case 7: // Agregar una palabra de 5 letras a Wordix.
+                $palabra5Letras = leerPalabra5Letras ();
+                $palabra = agregarPalabra ($palabras, $palabra5Letras);
                 break;
         }
     } while ($opcionMenu != 8); 
