@@ -328,14 +328,14 @@ function esIntentoGanado ($estructuraPalabraIntento) {
  */
 function obtenerPuntajeWordix($intentosUsados, $palabraGanadora) {
     // int $totalPuntaje, $puntosIntentos, $puntosLetra
-    // char $letraActual
+    // string $letraActual
     // array $palabraDesc
 
     //Inicializamos total puntaje.
     $totalPuntaje = 0;
 
     //Inicializamos puntaje base según intentos restantes (maximo 6 intentos).
-    $puntosIntentos = 7 - $intentosUsados;
+    $puntosIntentos = 6 - $intentosUsados;
 
     //Convertimos palabra en array de letras.
     $palabraDesc = str_split ($palabraGanadora);
@@ -363,6 +363,7 @@ function obtenerPuntajeWordix($intentosUsados, $palabraGanadora) {
 
     //Puntaje total
     $totalPuntaje = $puntosIntentos + $puntosLetra;
+
     return $totalPuntaje;
     
 }
@@ -387,11 +388,12 @@ function jugarWordix($palabraWordix, $nombreUsuario)
         $indiceIntento = $nroIntento - 1;
         $arregloDeIntentosWordix = analizarPalabraIntento($palabraWordix, $arregloDeIntentosWordix, $palabraIntento);
         $teclado = actualizarTeclado($teclado, $arregloDeIntentosWordix[$indiceIntento]);
+        
         /*Mostrar los resultados del análisis: */
         imprimirIntentosWordix($arregloDeIntentosWordix);
         escribirTeclado($teclado);
-        /*Determinar si la plabra intento ganó e incrementar la cantidad de intentos */
 
+        /*Determinar si la plabra intento ganó e incrementar la cantidad de intentos */
         $ganoElIntento = esIntentoGanado($arregloDeIntentosWordix[$indiceIntento]);
         $nroIntento++;
     } while ($nroIntento <= CANT_INTENTOS && !$ganoElIntento);

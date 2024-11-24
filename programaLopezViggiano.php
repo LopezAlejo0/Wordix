@@ -228,7 +228,6 @@
         "intento4" => $intento4,
         "intento5" => $intento5,
         "intento6" => $intento6,];
-        
         return $estadistica;
     }
 
