@@ -91,7 +91,32 @@
      */
     function mostrarPartida ($coleccionPartida, $numPartida) {
         // array $partida
-        $partida = $coleccionPartida[$numPartida];
+        //int $totalPartidas
+
+        $totalPartidas = count($coleccionPartida);
+
+        if ($numPartida >= 0 && $numPartida < $totalPartidas) {
+            $partida = $coleccionPartida[$numPartida];
+
+            echo "********************************** \n";
+            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n"; 
+
+            if ($partida["puntaje"] > 0) {
+                echo "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
+               
+            } else {
+                echo "Intento: no adivinó la palabra \n";
+            }
+            echo "********************************** \n";
+        } else {
+            echo "********************************** \n";
+            echo "El número de partida ingresado no es válido. \n";
+            echo "Debe ingresar un número entre 0 y " .  ($totalPartidas - 1) . "\n";
+            echo "********************************** \n";
+
+        }
+        
+        /* $partida = $coleccionPartida[$numPartida];
         if ($partida["puntaje"] > 0) {
             echo "********************************** \n";
             echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
@@ -101,7 +126,7 @@
             echo "********************************** \n";
            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra. \n";
            echo "********************************** \n";
-        }
+        } */
     }
 
     /**
@@ -210,7 +235,7 @@
         //Calculamos porcentaje y evitamos division por cero
         if ($partidas > 0) {
             $porcentajeVictorias = round(($victorias * 100) / $partidas);
-            
+
         }
         $estadistica = ["jugador" => $nombre, 
         "partidas" => $partidas, 
@@ -407,8 +432,7 @@
             case 3: // Mostrar una partida.
                 $totalPartidas = count ($juego);
                 echo "Ingrese un número de partida: \n";
-                $nroPartida = trim (fgets (STDIN));
-                solicitarNumeroEntre (0, $totalPartidas - 1);
+                $nroPartida = solicitarNumeroEntre (0, $totalPartidas - 1);
                 mostrarPartida ($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
