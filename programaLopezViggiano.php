@@ -169,7 +169,7 @@
         while ($i < $n && ($coleccionPartida[$i]["jugador"] != $nombre || $coleccionPartida[$i]["puntaje"] < 1)) {
             $i++;
         }
-        if ($coleccionPartida[$i]["puntaje"] > 0) {
+        if ($i < $n && $coleccionPartida[$i]["puntaje"] > 0) {
             $indiceGanada = $i;
         }
        return $indiceGanada;
@@ -439,22 +439,14 @@
                 mostrarPartida ($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
-                $nombre = solicitarJugador();
-                $primerPartidaGanada = partidaGanada($juego, $nombre);
-                mostrarPartida($juego, $primerPartidaGanada);//Reutilizamos mostrarPartida()
-                /* echo "*********************************************************** \n";
-                if ($primerPartidaGanada > -1) {
-                    echo "Partida Wordix " . $primerPartidaGanada . ": palabra " . $juego[$primerPartidaGanada]["palabraWordix"] . " \n";
-                    
-                    echo "Jugador: " . $juego[$primerPartidaGanada]["jugador"] . " \n";
-                    echo "Puntaje: " . $juego[$primerPartidaGanada]["puntaje"] . " \n";
-                    echo "Intento: Adivino la palabra en " . $juego[$primerPartidaGanada]["intentos"] . " intentos \n";
-                } elseif ($primerPartidaGanada == -1) {
-                    echo "El jugador " . $nombre . " no gano ninguna partida \n";
-                } else {
-                    echo "El jugador " . $nombre . " no jugo ninguna partida \n";
+                $jugador = solicitarJugador();
+                $primerPartidaGanada = partidaGanada($juego, $jugador);
+                if ($primerPartidaGanada == -1) {
+                    echo $jugador . " no ganó ninguna partida \n";
                 }
-                echo "*********************************************************** \n" ; */
+                else {
+                    mostrarPartida ($juego, $primerPartidaGanada);//Reutilizamos mostrarPartida()
+                }
                 break;
             case 5: // Mostrar las estadísticas de un jugador.
                 $jugador = solicitarJugador();
