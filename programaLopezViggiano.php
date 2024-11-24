@@ -182,7 +182,7 @@
                 if ($coleccionPartida[$i]["puntaje"] > 0) {
                     $victorias++;
                 }
-                switch ($coleccionPartida[$i]["intento"]) {
+                switch ($coleccionPartida[$i]["intentos"]) {
                     case 1:
                         $intento1++;
                         break;
