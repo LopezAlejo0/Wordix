@@ -416,29 +416,33 @@
         $opcionMenu = seleccionarOpción(); // Invoca al menú y guarda la opción seleccionada
         switch ($opcionMenu) {
             case 1: // Jugar con una palabra elegida por teclado.
-                $jugador = solicitarJugador ();
-                $palabraElegida = elegirPalabra ($jugador, $palabras, $juego);
-                $partida = jugarWordix ($palabraElegida, $jugador);
+                $jugador = solicitarJugador();
+                $palabraElegida = elegirPalabra($jugador, $palabras, $juego);
+                $partida = jugarWordix($palabraElegida, $jugador);
                 // Agregamos la nueva partida al array de partidas.
-                $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
+                $juego[] = $partida;//Guarda directamente la partida.
+
+                /* $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]]; */
                 break;
             case 2: // Jugar con una palabra aleatoria.
-                $jugador = solicitarJugador ();
+                $jugador = solicitarJugador();
                 $palabraElegida = elegirPalabraAleatoria($jugador, $palabras, $juego);
                 $partida = jugarWordix ($palabraElegida, $jugador);
                 // Agregamos la nueva partida al array de partidas.
-                $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
+                $juego[] = $partida;
+                /* $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]]; */
                 break;
             case 3: // Mostrar una partida.
-                $totalPartidas = count ($juego);
+                $totalPartidas = count($juego);
                 echo "Ingrese un número de partida: \n";
-                $nroPartida = solicitarNumeroEntre (0, $totalPartidas - 1);
+                $nroPartida = solicitarNumeroEntre(0, $totalPartidas - 1);
                 mostrarPartida ($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
                 $nombre = solicitarJugador();
                 $primerPartidaGanada = partidaGanada($juego, $nombre);
-                echo "*********************************************************** \n";
+                mostrarPartida($juego, $primerPartidaGanada);//Reutilizamos mostrarPartida()
+                /* echo "*********************************************************** \n";
                 if ($primerPartidaGanada > -1) {
                     echo "Partida Wordix " . $primerPartidaGanada . ": palabra " . $juego[$primerPartidaGanada]["palabraWordix"] . " \n";
                     
@@ -450,22 +454,23 @@
                 } else {
                     echo "El jugador " . $nombre . " no jugo ninguna partida \n";
                 }
-                echo "*********************************************************** \n" ;
+                echo "*********************************************************** \n" ; */
                 break;
             case 5: // Mostrar las estadísticas de un jugador.
-                $jugador = solicitarJugador ();
-                $resumen = resumenJugador ($juego, $jugador);
-                mostrarResumen ($resumen);
+                $jugador = solicitarJugador();
+                $resumen = resumenJugador($juego, $jugador);
+                mostrarResumen($resumen);
                 break;
             case 6: // Mostrar listado de partidas ordenadas por jugador y por palabra.
                 echo "********************************** \n";
                 echo "Listado de partidas: \n";
-                ordenaAlfabeticamente ($juego);
+                ordenaAlfabeticamente($juego);
                 echo "********************************** \n";
                 break;
             case 7: // Agregar una palabra de 5 letras a Wordix.
-                $palabra5Letras = leerPalabra5Letras ();
-                $palabra = agregarPalabra ($palabras, $palabra5Letras);
+                $palabra5Letras = leerPalabra5Letras();
+                $palabra = agregarPalabra($palabras, $palabra5Letras);//Guardamos el array actualizado
+                echo "Palabra " . $palabra5Letras . " agregada exitosamente! \n";
                 break;
             case 8: // Salir del juego.
                 echo "Gracias por jugar";
