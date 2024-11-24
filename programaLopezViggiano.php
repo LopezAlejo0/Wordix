@@ -126,7 +126,9 @@
         }
         if ($i >= $cantPalabras) {
             $palabras[$cantPalabras] = $palabraIngresada;
+            echo "********************************** \n";
             echo "Se agregó la palabra " . $palabraIngresada . "\n";
+            echo "********************************** \n";
         }
         else {
             echo "La palabra " . $palabraIngresada . " ya existe \n";
@@ -311,6 +313,7 @@
              echo "Número de palabra no válido, ya jugaste con esa palabra, intente nuevamente \n";
             }
             else {
+                echo "********************************** \n";
                 echo "Puede jugar con esa palabra \n";
             }
         } while ($repetida);
@@ -442,6 +445,7 @@
                 $palabras = agregarPalabra($palabras, $palabra5Letras); //Guardamos el array actualizado
                 break;
             case 8: // Salir del juego.
+                echo "********************************** \n";
                 echo "Gracias por jugar";
                 break;
         }
