@@ -349,7 +349,12 @@
     /**************************************/
 
     //Declaración de variables:
-       //ARRAY $juego, $palabras
+    //RRAY $juego, $palabras
+    /**
+     * array $juego, $palabras, $partida
+     * int $opcionMenu, $totalPartidas, $nroPartida
+     * String $jugador, $palabraElegida
+     */
 
     //Inicialización de variables:
     $juego = cargarPartidas (); 
@@ -371,19 +376,20 @@
                 // Agregamos la nueva partida al array de partidas.
                 $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
                 break;
-            case 2: // Jugar con una palabra aleatoria
-                $nombre = solicitarJugador ();
+            case 2: // Jugar con una palabra aleatoria.
+                $jugador = solicitarJugador ();
                 $palabraElegida = elegirPalabraAleatoria($jugador, $palabras, $juego);
                 $partida = jugarWordix ($palabraElegida, $jugador);
                 // Agregamos la nueva partida al array de partidas.
                 $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
                 break;
-            case 3: 
-                //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-
+            case 3: // Mostrar una partida.
+                $totalPartidas = count ($juego);
+                echo "Ingrese un número de partida: ";
+                $nroPartida = trim (fgets (STDIN));
+                solicitarNumeroEntre (0, $totalPartidas - 1);
+                mostrarPartida ($juego, $nroPartida);
                 break;
-            
-                //...
         }
     } while ($opcionMenu != 8); 
     
