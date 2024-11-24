@@ -276,22 +276,22 @@
        }
  
     /**
-    * Permite al jugador elegir una palabra no jugada
-    * @param string $nombre nombre del jugador
-    * @param array $coleccionPalabras array de palabras disponibles
-    * @param array $historialPartidas array de partidas jugadas
-    * @return string palabra seleccionada
+    * Recibe el nombre de un jugador, la colección de palabras para jugar y el historial de partidas. Verifica que la palabra elegida se encuentre
+    * dentro de las que están disponibles. Si la opción es inválida, vuelve a pedir.
+    * Retorna la palabra seleccionada.
+    * @param string $nombre
+    * @param array $coleccionPalabras
+    * @param array $historialPartidas
+    * @return string
     */
-    function elegirPalabra($nombre, $coleccionPalabras, $historialPartidas) {
+    function elegirPalabra ($nombre, $coleccionPalabras, $historialPartidas) {
         //int $totalPalabras  
-        $totalPalabras = count($coleccionPalabras);
-
+        $totalPalabras = count ($coleccionPalabras);
         do {
-        
             echo "Ingrese un numero de palabra: ";
             $num = solicitarNumeroEntre (0, $totalPalabras - 1);
             $palabraSeleccionada = $coleccionPalabras[$num];
-            $repetida = palabraRepetida($nombre, $palabraSeleccionada, $historialPartidas);
+            $repetida = palabraRepetida ($nombre, $palabraSeleccionada, $historialPartidas);
             if ($repetida) {
              echo "Número de palabra no válido, ya jugaste con esa palabra, intente nuevamente \n";
             }
@@ -299,25 +299,49 @@
                 echo "Puede jugar con esa palabra \n";
             }
         } while ($repetida);
+        return $palabraSeleccionada;
+    }
 
+    /**
+     * Recibe el nombre de un jugador, la colección de palabras para jugar y el historial de partidas.
+     * Selecciona una palabra aleatoria de las disponibles en la colección. Retorna la palabra seleccionada.
+     * @param String $nombre
+     * @param array $coleccionPalabras
+     * @param array $historialPartidas
+     * @return String
+     */
+    function elegirPalabraAleatoria ($nombre, $coleccionPalabras, $historialPartidas) {
+        $totalPalabras = count ($coleccionPalabras);
+        do {
+            $numAleatorio = rand (0, $totalPalabras);
+            $palabraSeleccionada = $coleccionPalabras[$numAleatorio];
+            $repetida = palabraRepetida ($nombre, $palabraSeleccionada, $historialPartidas);
+        } while ($repetida);
         return $palabraSeleccionada;
     }
 
    
-
-    function palabraRepetida($nombre, $palabra, $historial){
-            
-            $encontrada = false;
-    
-            foreach($historial as $partida) {
-                if ($partida["jugador"] == $nombre && $partida["palabraWordix"] == $palabra) {
-                    $encontrada = true;
-                }
-                
+    /**
+     * Recibe el nombre de un jugador, la palabra que se va a utilizar y el historial de partidas. Determina si la palabra ya fue usada por el jugador.
+     * Retorna true si la palabra ya fue utilizada. Caso contrario, retorna false.
+     * @param String $nombre
+     * @param String $palabra
+     * @param array $historial
+     * @return boolean
+     */
+    function palabraRepetida ($nombre, $palabra, $historial) {
+        // boolean $encontrada
+        $encontrada = false;
+        foreach ($historial as $partida) {
+            if ($partida["jugador"] == $nombre && $partida["palabraWordix"] == $palabra) {
+                $encontrada = true;
             }
-
+        }
         return $encontrada;
     }
+
+
+
     /* ****COMPLETAR***** */
 
     /**************************************/
@@ -328,32 +352,31 @@
        //ARRAY $juego, $palabras
 
     //Inicialización de variables:
-
+    $juego = cargarPartidas (); 
+    $palabras = cargarColeccionPalabras ();
+    $opcionMenu = 0;
 
     //Proceso:
 
-    $juego = cargarPartidas(); 
-    $palabras = cargarColeccionPalabras();
-    
-    $partida = jugarWordix("MELON", strtolower("MaJo"));
     //print_r($partida);
     //imprimirResultado($partida);
 
     do {
-        //Invoca al menu y guarda la opcion seleccionada
-        $opcionMenu = seleccionarOpción();
-
+        $opcionMenu = seleccionarOpción(); // Invoca al menú y guarda la opción seleccionada
         switch ($opcionMenu) {
-            case 1: 
-                $nombre = solicitarJugador();
-                $palabraElegida = elegirPalabra($nombre,$palabras,$juego);
-                $partida = jugarWordix($palabraElegida, $nombre);
-                //Agregamos la nueva partida al array de partidas
+            case 1: // Jugar con una palabra elegida por teclado.
+                $jugador = solicitarJugador ();
+                $palabraElegida = elegirPalabra ($jugador, $palabras, $juego);
+                $partida = jugarWordix ($palabraElegida, $jugador);
+                // Agregamos la nueva partida al array de partidas.
                 $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
                 break;
-            case 2: 
-                //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-
+            case 2: // Jugar con una palabra aleatoria
+                $nombre = solicitarJugador ();
+                $palabraElegida = elegirPalabraAleatoria($jugador, $palabras, $juego);
+                $partida = jugarWordix ($palabraElegida, $jugador);
+                // Agregamos la nueva partida al array de partidas.
+                $juego[] = ["palabraWordix" => $partida["palabraWordix"], "jugador" => $partida["jugador"], "intentos" => $partida["intentos"], "puntaje" => $partida["puntaje"]];
                 break;
             case 3: 
                 //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
