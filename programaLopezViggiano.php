@@ -161,6 +161,7 @@
     */
     function resumenJugador ($coleccionPartida, $nombre) {
         //int $n, $i, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6, $victorias, $partidas, $puntaje;
+        //float $porcentajeVictorias;
         //array $estadistica;
         $n = count($coleccionPartida);
         $i = 0;
@@ -171,6 +172,7 @@
         $intento5 = 0;
         $intento6 = 0;
         $victorias = 0;
+        $porcentajeVictorias = 0;
         $partidas = 0;
         $jugador = $nombre;
         $puntaje = 0;
@@ -204,7 +206,24 @@
                 }
             }
         }
-        $estadistica = ["jugador" => $nombre, "partidas" => $partidas, "puntaje" => $puntaje, "victorias" => $victorias, "intento1" => $intento1, "intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,];
+
+        //Calculamos porcentaje y evitamos division por cero
+        if ($partidas > 0) {
+            $porcentajeVictorias = round(($victorias * 100) / $partidas);
+            
+        }
+        $estadistica = ["jugador" => $nombre, 
+        "partidas" => $partidas, 
+        "puntaje" => $puntaje, 
+        "victorias" => $victorias, 
+        "porcentajeVictorias" => $porcentajeVictorias,
+        "intento1" => $intento1, 
+        "intento2" => $intento2,
+        "intento3" => $intento3,
+        "intento4" => $intento4,
+        "intento5" => $intento5,
+        "intento6" => $intento6,];
+
         return $estadistica;
     }
 
@@ -339,6 +358,8 @@
         echo "Jugador: " . $estadisticasJugador["jugador"] . "\n";
         echo "Partidas: " . $estadisticasJugador["partidas"] . "\n";
         echo "Puntaje total: " . $estadisticasJugador["puntaje"] . "\n";
+        echo "Victorias: " . $estadisticasJugador["victorias"] . "\n";
+        echo "Porcentaje Victorias: " . $estadisticasJugador["porcentajeVictorias"] . "% \n";
         echo "Adivinadas: \n";
         echo "  Intento 1: " . $estadisticasJugador["intento1"] . "\n";
         echo "  Intento 2: " . $estadisticasJugador["intento2"] . "\n";
