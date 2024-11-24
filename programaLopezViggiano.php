@@ -425,6 +425,9 @@
                 $palabra5Letras = leerPalabra5Letras ();
                 $palabra = agregarPalabra ($palabras, $palabra5Letras);
                 break;
+            case 8: // Salir del juego.
+                echo "Gracias por jugar";
+                break;
         }
     } while ($opcionMenu != 8); 
     
