@@ -92,14 +92,14 @@
         // array $partida
         $partida = $coleccionPartida[$numPartida];
         if ($partida["puntaje"] > 0) {
-            echo "********************************** \n";
-            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos";
-            echo "********************************** \n";
+            echo "******************************************* \n";
+            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
+            echo "******************************************* \n";
         }
         else {
-            echo "********************************** \n";
+            echo "******************************************* \n";
            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
-           echo "********************************** \n";
+           echo "******************************************* \n";
         }
     }
 
@@ -181,7 +181,7 @@
                 if ($coleccionPartida[$i]["puntaje"] > 0) {
                     $victorias++;
                 }
-                switch ($coleccionPartida[$i]["intento"]) {
+                switch ($coleccionPartida[$i]["intentos"]) {
                     case 1:
                         $intento1++;
                         break;
@@ -303,7 +303,7 @@
     function elegirPalabraAleatoria ($nombre, $coleccionPalabras, $historialPartidas) {
         $totalPalabras = count ($coleccionPalabras);
         do {
-            $numAleatorio = rand (0, $totalPalabras);
+            $numAleatorio = rand (0, $totalPalabras - 1);
             $palabraSeleccionada = $coleccionPalabras[$numAleatorio];
             $repetida = palabraRepetida ($nombre, $palabraSeleccionada, $historialPartidas);
         } while ($repetida);
@@ -339,12 +339,12 @@
         echo "Partidas: " . $estadisticasJugador["partidas"] . "\n";
         echo "Puntaje total: " . $estadisticasJugador["puntaje"] . "\n";
         echo "Adivinadas: \n";
-        echo "  Intento 1: " . $estadisticasJugador["intento1"];
-        echo "  Intento 2: " . $estadisticasJugador["intento2"];
-        echo "  Intento 3: " . $estadisticasJugador["intento3"];
-        echo "  Intento 4: " . $estadisticasJugador["intento4"];
-        echo "  Intento 5: " . $estadisticasJugador["intento5"];
-        echo "  Intento 6: " . $estadisticasJugador["intento6"];
+        echo "  Intento 1: " . $estadisticasJugador["intento1"] . "\n";
+        echo "  Intento 2: " . $estadisticasJugador["intento2"] . "\n";
+        echo "  Intento 3: " . $estadisticasJugador["intento3"] . "\n";
+        echo "  Intento 4: " . $estadisticasJugador["intento4"] . "\n";
+        echo "  Intento 5: " . $estadisticasJugador["intento5"] . "\n";
+        echo "  Intento 6: " . $estadisticasJugador["intento6"] . "\n";
         echo "********************************** \n";
     }
 
@@ -385,8 +385,7 @@
             case 3: // Mostrar una partida.
                 $totalPartidas = count ($juego);
                 echo "Ingrese un número de partida: ";
-                $nroPartida = trim (fgets (STDIN));
-                solicitarNumeroEntre (0, $totalPartidas - 1);
+                $nroPartida = solicitarNumeroEntre (0, $totalPartidas - 1);
                 mostrarPartida ($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
@@ -404,7 +403,7 @@
                 break;
             case 7: // Agregar una palabra de 5 letras a Wordix.
                 $palabra5Letras = leerPalabra5Letras ();
-                $palabra = agregarPalabra ($palabras, $palabra5Letras);
+                $palabras = agregarPalabra ($palabras, $palabra5Letras);
                 break;
             case 8: // Salir del juego.
                 echo "Gracias por jugar";
