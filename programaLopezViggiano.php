@@ -6,7 +6,8 @@
     /**************************************/
 
     /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-    /* ****COMPLETAR**** */
+    /* Viggiano, Paula. FAI-5516. TDUW. paula.viggiano@est.fi.uncoma.edu.ar. Pauviggiano*/
+    /* Lopez, Alejo. FAI- . TDUW. alejo.lopez@est.fi.uncoma.edu.ar. LopezAlejo0*/
 
     /**************************************************/
     /***** DEFINICIÓN DE FUNCIONES PRINCIPALES ********/
