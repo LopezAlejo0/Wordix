@@ -340,6 +340,25 @@
         return $encontrada;
     }
 
+    /**
+     * Recibe las estadísticas de un jugador para mostrarlas por pantalla.
+     * @param array $estadisticasJugador
+     */
+    function mostrarResumen ($estadisticasJugador) {
+        echo "********************************** \n";
+        echo "Jugador: " . $estadisticasJugador["jugador"] . "\n";
+        echo "Partidas: " . $estadisticasJugador["partidas"] . "\n";
+        echo "Puntaje total: " . $estadisticasJugador["puntaje"] . "\n";
+        echo "Adivinadas: \n";
+        echo "  Intento 1: " . $estadisticasJugador["intento1"];
+        echo "  Intento 2: " . $estadisticasJugador["intento2"];
+        echo "  Intento 3: " . $estadisticasJugador["intento3"];
+        echo "  Intento 4: " . $estadisticasJugador["intento4"];
+        echo "  Intento 5: " . $estadisticasJugador["intento5"];
+        echo "  Intento 6: " . $estadisticasJugador["intento6"];
+        echo "********************************** \n";
+    }
+
 
 
     /* ****COMPLETAR***** */
@@ -389,6 +408,13 @@
                 $nroPartida = trim (fgets (STDIN));
                 solicitarNumeroEntre (0, $totalPartidas - 1);
                 mostrarPartida ($juego, $nroPartida);
+                break;
+            case 4: // Mostrar la primer partida ganada de un jugador.
+                break;
+            case 5: // Mostrar las estadísticas de un jugador.
+                $jugador = solicitarJugador ();
+                $resumen = resumenJugador ($juego, $jugador);
+                mostrarResumen ($resumen);
                 break;
         }
     } while ($opcionMenu != 8); 
