@@ -393,7 +393,12 @@
             case 5: // Mostrar las estadísticas de un jugador.
                 $jugador = solicitarJugador ();
                 $resumen = resumenJugador ($juego, $jugador);
-                mostrarResumen ($resumen);
+                if ($resumen["partidas"] == 0) {
+                    echo $jugador . " no ha jugado ninguna partida \n";
+                }
+                else {
+                    mostrarResumen ($resumen);
+                }
                 break;
             case 6: // Mostrar listado de partidas ordenadas por jugador y por palabra.
                 echo "********************************** \n";
