@@ -1,8 +1,6 @@
 <?php
     include_once ("wordix.php");
 
-
-
     /**************************************/
     /***** DATOS DE LOS INTEGRANTES *******/
     /**************************************/
@@ -10,14 +8,13 @@
     /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
     /* ****COMPLETAR**** */
 
-
     /**************************************************/
     /***** DEFINICIÓN DE FUNCIONES PRINCIPALES ********/
     /**************************************************/
 
-    /** FUNCIÓN 1 
-     * Explicación 3 (punto 1)
-     * Obtiene una colección de palabras de 5 letras y devuelve el arreglo
+    /**
+     * Explicación 3 (punto 1).
+     * Obtiene una colección de palabras de 5 letras y devuelve el arreglo.
      * @return array
      */
     function cargarColeccionPalabras ()
@@ -32,12 +29,13 @@
         return ($coleccionPalabras); 
     }
 
-        /** FUNCIÓN 2
-         * Explicación 3 (punto 2)
-         * Esta función inicializa una estructura de datos y retorna la colección
-     * @RETUR ARRAY  */ 
+    /**
+     * Explicación 3 (punto 2).
+     * Esta función inicializa una estructura de datos y retorna la colección.
+     * @return array
+     */ 
     function cargarPartidas () {
-        //ARRAY $coleccionPartidas
+        // array $coleccionPartidas
         $coleccionPartidas[0] = ["palabraWordix" => "QUESO", "jugador" => "alejo", "intentos" => 4, "puntaje" => 12];
         $coleccionPartidas[1] = ["palabraWordix" => "MUJER", "jugador" => "frescia", "intentos" => 1, "puntaje" => 15];
         $coleccionPartidas[2] = ["palabraWordix" => "PIANO", "jugador" => "veronica", "intentos" => 5, "puntaje" => 11];
@@ -52,9 +50,9 @@
         return $coleccionPartidas;
     }
 
-    /** FUNCIÓN 3
-     * Explicación 3 (punto 3)
-     * Muestra por pantalla un menú con las opciones disponibles para el jugador
+    /**
+     * Explicación 3 (punto 3).
+     * Muestra por pantalla un menú con las opciones disponibles para el jugador.
      * @return int
      */
     function seleccionarOpción () {
@@ -69,25 +67,24 @@
         echo "7) Agregar una nueva palabra de 5 letras \n";
         echo "8) Salir \n";
         echo "Seleccione una opción: \n";
-        
         // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú
         $opcion = solicitarNumeroEntre (1, 8);
         return $opcion;
     }
 
-    /** FUNCIÓN 4
-     *  Explicación 3 (punto 4)
-     * La función está en wordix.php (lineas 153-163)
+    /**
+     *  Explicación 3 (punto 4).
+     * La función está en wordix.php (lineas 153-163).
      */
 
-    /** FUNCIÓN 5
-     * Explicación 3 (punto 5)
-     * La función está en wordix.php (lineas 35-49)
+    /**
+     * Explicación 3 (punto 5).
+     * La función está en wordix.php (lineas 35-49).
      */
 
-    /** FUNCIÓN 6
-     * Explicación 3 (punto 6)
-     * Recibe un número de partida y muestra por pantalla los datos de dicha partida
+    /**
+     * Explicación 3 (punto 6).
+     * Recibe un número de partida y muestra por pantalla los datos de dicha partida.
      * @param array $colecciónPartida
      * @param int $numPartida
      */
@@ -106,8 +103,8 @@
         }
     }
 
-    /** FUNCIÓN 7
-     * Explicación 3 (punto 7)
+    /**
+     * Explicación 3 (punto 7).
      * Recibe una colección de palabras y una palabra ingresada de 5 letras. Determina si la palabra ingresda ya se encuentra en la colección.
      * Retorna la colección de palabras con la nueva palabra (siempre y cuando, esta no se encuentre desde antes).
      * @param array $palabras
@@ -131,40 +128,37 @@
         return $palabras;
     }
 
-    /**FUNCIÓN 8 
-     * Explicación 3 (punto 8)
+    /**
+     * Explicación 3 (punto 8).
      * Recibe la coleccion de partidas y el nombre del jugador. Retorna el indice de la primer partida ganada por el jugador, si no gano ninguna retorna -1.
      * @param array $coleccionPartida
      * @param string $nombre
      * @return int
     */
-
-    function partidaGanada($coleccionPartida, $nombre) {
+    function partidaGanada ($coleccionPartida, $nombre) {
         //int $n, $i, $j;
-        $n = count($coleccionPartida);
+        $n = count ($coleccionPartida);
         $i = 0;
-        $j = -1;
-        
-        while ($i <$n && ($coleccionPartida[$i]["jugador"] != $nombre || $coleccionPartida[$i]["puntaje"] < 1)) {
+        $indiceGanada = -1;
+        while ($i < $n && ($coleccionPartida[$i]["jugador"] != $nombre || $coleccionPartida[$i]["puntaje"] < 1)) {
             $i++;
         }
-
-        if ($coleccionPartida[$i]["puntaje"] >0) {
-            $j = $i;
+        if ($coleccionPartida[$i]["puntaje"] > 0) {
+            $indiceGanada = $i;
         }
-       return $j;
+       return $indiceGanada;
     }
 
-    /**FUNCIÓN 9 
+    /**
+     * Explicación 3 (punto 9).
      * Esta función recibe un arreglo por parametros y el nombre del jugador. Devuelve el resumen del jugador
      * Utilizará una estructura asociativa para almacenar el resumen de un jugador que   *tendrá los siguientes
-     *datos: jugador, partidas, puntaje, victorias, intento1, intento2, intento3, *intento4, intento5, intento6.
+     * datos: jugador, partidas, puntaje, victorias, intento1, intento2, intento3, *intento4, intento5, intento6.
      * @param array $coleccionPartida
      * @param string $nombre
      * @return array
     */
-
-    function resumenJugador($coleccionPartida, $nombre) {
+    function resumenJugador ($coleccionPartida, $nombre) {
         //int $n, $i, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6, $victorias, $partidas, $puntaje;
         //array $estadistica;
         $n = count($coleccionPartida);
@@ -180,7 +174,6 @@
         $jugador = $nombre;
         $puntaje = 0;
         $estadistica = [];
-
         for ($i=0; $i < $n ; $i++) { 
             if ($coleccionPartida[$i]["jugador"] == $nombre) {
                 $partidas++;
@@ -188,7 +181,6 @@
                 if ($coleccionPartida[$i]["puntaje"] > 0) {
                     $victorias++;
                 }
-
                 switch ($coleccionPartida[$i]["intento"]) {
                     case 1:
                         $intento1++;
@@ -207,20 +199,16 @@
                         break;
                     case 6:
                         $intento6++;
-                        break;
-                    
+                        break;   
                 }
-
             }
         }
-
         $estadistica = ["jugador" => $nombre, "partidas" => $partidas, "puntaje" => $puntaje, "victorias" => $victorias, "intento1" => $intento1, "intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,];
-
         return $estadistica;
-        
     }
 
-    /** FUNCIÓN 10
+    /**
+     * Explicación 3 (punto 10.)
      * Solicita el nombre de un jugador para ese nombre con letras minusculas. Verifica que el primer caracter sea una letra.
      * @return String
      */
@@ -242,38 +230,40 @@
             return $nombre;
       }
 
-    /**FUNCION 11
+    /**
+     * Explicación 3 (punto 11, se utilizaron dos funciones en conjunto).
      * Recibe por paramentros la colección de partidas, muestra la colección de partidas ordenada por el nombre del jugador y por la palabra.
      */
 
-     /**Esta funcion compara los nombres del array, los ordena alfabeticamente y luego ordena segun el nombre   las palabras lexicograficamente. Devuelve un valor entero.
+     /**
+      * Esta funcion compara los nombres del array, los ordena alfabeticamente y luego ordena segun el nombre   las palabras lexicograficamente. 
+      * Devuelve un valor entero.
       * Si la cadena es identica (a==b) retorna 0, si a < b retorna -1 y si a > b retorna 1.
       * @param string $cadena1
       * @param string $cadena2
       * @return int
       */
-
       function comparadorCadenas($cadena1, $cadena2) {
         // int $resultado
-
         $resultado = strcmp($cadena1["jugador"], $cadena2["jugador"]);
-
         if ($resultado == 0) {
             $resultado = strcmp($cadena1["palabraWordix"], $cadena2["palabraWordix"]);
-
         }
-
         return $resultado;
       }
 
-      /**Ordena alfabeticamente los strings ingresados
+      /** 
+       * Ordena alfabeticamente los strings ingresados utilizando la función predefinida uasort.
        * @param array $coleccionPartidas
        */
-
        function ordenaAlfabeticamente($coleccionPartida) {
         uasort($coleccionPartida, 'comparadorCadenas'); //Ejecuta la funcion comparadorCadenas la cual ordena propiamente por orden alfabetico el nombre y la palabra. comparadorCadenas esta entre comillas porque se trata de una referencia de esa funcion y no de su ejecucion
         print_r($coleccionPartida); //Imprime el array ordenado 
        }
+
+    /******************************************************/
+    /***** DEFINICIÓN DE FUNCIONES COMPLEMENTARIAS ********/
+    /******************************************************/
  
     /**
     * Recibe el nombre de un jugador, la colección de palabras para jugar y el historial de partidas. Verifica que la palabra elegida se encuentre
@@ -319,7 +309,6 @@
         } while ($repetida);
         return $palabraSeleccionada;
     }
-
    
     /**
      * Recibe el nombre de un jugador, la palabra que se va a utilizar y el historial de partidas. Determina si la palabra ya fue usada por el jugador.
@@ -359,10 +348,6 @@
         echo "********************************** \n";
     }
 
-
-
-    /* ****COMPLETAR***** */
-
     /**************************************/
     /*********** PROGRAMA PRINCIPAL *******/
     /**************************************/
@@ -380,10 +365,6 @@
     $opcionMenu = 0;
 
     //Proceso:
-
-    //print_r($partida);
-    //imprimirResultado($partida);
-
     do {
         $opcionMenu = seleccionarOpción(); // Invoca al menú y guarda la opción seleccionada
         switch ($opcionMenu) {
