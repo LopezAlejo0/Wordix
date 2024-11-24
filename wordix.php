@@ -153,11 +153,10 @@ function esPalabra ($cadena) {
 function leerPalabra5Letras () {
     //string $palabra
     echo "Ingrese una palabra de 5 letras: ";
-    $palabra = trim (fgets(STDIN));
-    $palabra = strtoupper ($palabra); // Convierte la palabra a mayúsculas
-    while ((strlen ($palabra) != 5) || !esPalabra ($palabra)) { // La funcion invocada esPalabra determina si la cadena ingresada es una palabra válida
+    $palabra = strtoupper (trim (fgets (STDIN))); // lee y convierte la palabra a mayúsculas.
+    while ((strlen ($palabra) != 5) || !esPalabra ($palabra)) { // La funcion invocada esPalabra determina si la cadena ingresada es una palabra válida.
         echo "Debe ingresar una palabra de 5 letras:";
-        $palabra = strtoupper (trim(fgets(STDIN)));
+        $palabra = strtoupper (trim (fgets (STDIN)));
     }
     return $palabra;
 }

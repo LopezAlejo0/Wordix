@@ -7,13 +7,14 @@
 
     /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
     /* Viggiano, Paula. FAI-5516. TDUW. paula.viggiano@est.fi.uncoma.edu.ar. Pauviggiano*/
-    /* Lopez, Alejo. FAI- . TDUW. alejo.lopez@est.fi.uncoma.edu.ar. LopezAlejo0*/
+    /* Lopez, Alejo. FAI-3146 . TDUW. alejo.lopez@est.fi.uncoma.edu.ar. LopezAlejo0*/
 
     /**************************************************/
     /***** DEFINICIÓN DE FUNCIONES PRINCIPALES ********/
     /**************************************************/
 
     /**
+     * FUNCIÓN 1.
      * Explicación 3 (punto 1).
      * Obtiene una colección de palabras de 5 letras y devuelve el arreglo.
      * @return array
@@ -31,6 +32,7 @@
     }
 
     /**
+     * FUNCIÓN 2.
      * Explicación 3 (punto 2).
      * Esta función inicializa una estructura de datos y retorna la colección.
      * @return array
@@ -52,13 +54,13 @@
     }
 
     /**
+     * FUNCIÓN 3.
      * Explicación 3 (punto 3).
      * Muestra por pantalla un menú con las opciones disponibles para el jugador.
      * @return int
      */
     function seleccionarOpción () {
         // int $opción
-        
         echo "1) Jugar Wordix con una palabra elegida \n";
         echo "2) Jugar Wordix con una palabra aleatoria \n";
         echo "3) Mostrar una partida \n";
@@ -68,22 +70,25 @@
         echo "7) Agregar una nueva palabra de 5 letras \n";
         echo "8) Salir \n";
         echo "Seleccione una opción: \n";
-        // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú
+        // La función invocada verifica que el número ingresado se encuentre dentro del rango del menú.
         $opcion = solicitarNumeroEntre (1, 8);
         return $opcion;
     }
 
     /**
+     * FUNCIÓN 4.
      *  Explicación 3 (punto 4).
-     * La función está en wordix.php (lineas 153-163).
+     * La función leerPalabra5Letras está en wordix.php (lineas 153-163).
      */
 
     /**
+     * FUNCIÓN 5.
      * Explicación 3 (punto 5).
-     * La función está en wordix.php (lineas 35-49).
+     * La función solicitarNumeroEntre está en wordix.php (lineas 35-49).
      */
 
     /**
+     * FUNCIÓN 6.
      * Explicación 3 (punto 6).
      * Recibe un número de partida y muestra por pantalla los datos de dicha partida.
      * @param array $colecciónPartida
@@ -91,34 +96,20 @@
      */
     function mostrarPartida ($coleccionPartida, $numPartida) {
         // array $partida
-        //int $totalPartidas
-
-        $totalPartidas = count($coleccionPartida);
-
-        if ($numPartida >= 0 && $numPartida < $totalPartidas) {
-            $partida = $coleccionPartida[$numPartida];
-
-            echo "********************************** \n";
-            echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n"; 
-
-            if ($partida["puntaje"] > 0) {
-                echo "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
-               
-            } else {
-                echo "Intento: no adivinó la palabra \n";
-            }
-            echo "********************************** \n";
-        } else {
-            echo "********************************** \n";
-            echo "El número de partida ingresado no es válido. \n";
-            echo "Debe ingresar un número entre 0 y " .  ($totalPartidas - 1) . "\n";
-            echo "********************************** \n";
-
+        $partida = $coleccionPartida[$numPartida];
+        echo "********************************** \n";
+        echo "Partida WORDIX " . ($numPartida + 1) . ": palabra " . $partida["palabraWordix"] . "\n" . "Jugador: " . $partida["jugador"] . "\n" . "Puntaje: " . $partida["puntaje"] . " puntos\n"; 
+        if ($partida["puntaje"] > 0) {
+            echo "Intento: Adivinó la palabra en " . $partida["intentos"] . " intentos \n";
         }
-        
+        else {
+            echo "Intento: no adivinó la palabra \n";
+        }
+        echo "********************************** \n";
     }
 
     /**
+     * FUNCIÓN 7.
      * Explicación 3 (punto 7).
      * Recibe una colección de palabras y una palabra ingresada de 5 letras. Determina si la palabra ingresda ya se encuentra en la colección.
      * Retorna la colección de palabras con la nueva palabra (siempre y cuando, esta no se encuentre desde antes).
@@ -126,7 +117,7 @@
      * @param String $palabraIngresada
      * @return array
      */
-    function agregarPalabra($palabras, $palabraIngresada) {
+    function agregarPalabra ($palabras, $palabraIngresada) {
         // int $i, $cantPalabras
         $i = 0;
         $cantPalabras = count($palabras);
@@ -144,15 +135,16 @@
     }
 
     /**
+     * FUNCIÓN 8.
      * Explicación 3 (punto 8).
      * Recibe la coleccion de partidas y el nombre del jugador. Retorna el indice de la primer partida ganada por el jugador, si no gano ninguna retorna -1.
      * @param array $coleccionPartida
      * @param string $nombre
      * @return int
     */
-    function partidaGanada($coleccionPartida, $nombre) {
+    function partidaGanada ($coleccionPartida, $nombre) {
         //int $n, $i, $j;
-        $n = count($coleccionPartida);
+        $n = count ($coleccionPartida);
         $i = 0;
         $indiceGanada = -1;
         while ($i < $n && ($coleccionPartida[$i]["jugador"] != $nombre || $coleccionPartida[$i]["puntaje"] < 1)) {
@@ -165,6 +157,7 @@
     }
 
     /**
+     * FUNCIÓN 9.
      * Explicación 3 (punto 9).
      * Esta función recibe un arreglo por parametros y el nombre del jugador. Devuelve el resumen del jugador
      * Utilizará una estructura asociativa para almacenar el resumen de un jugador que   *tendrá los siguientes
@@ -220,11 +213,9 @@
                 }
             }
         }
-
         //Calculamos porcentaje y evitamos division por cero
         if ($partidas > 0) {
             $porcentajeVictorias = round(($victorias * 100) / $partidas);
-
         }
         $estadistica = ["jugador" => $nombre, 
         "partidas" => $partidas, 
@@ -237,12 +228,12 @@
         "intento4" => $intento4,
         "intento5" => $intento5,
         "intento6" => $intento6,];
-
         return $estadistica;
     }
 
     /**
-     * Explicación 3 (punto 10.)
+     * FUNCIÓN 10.
+     * Explicación 3 (punto 10).
      * Solicita el nombre de un jugador para ese nombre con letras minusculas. Verifica que el primer caracter sea una letra.
      * @return String
      */
@@ -270,7 +261,7 @@
      */
 
      /**
-      * Esta funcion compara los nombres del array, los ordena alfabeticamente y luego ordena segun el nombre   las palabras lexicograficamente. 
+      * Esta funcion compara los nombres del array, los ordena alfabeticamente y luego ordena según el nombre   las palabras lexicograficamente. 
       * Devuelve un valor entero.
       * Si la cadena es identica (a==b) retorna 0, si a < b retorna -1 y si a > b retorna 1.
       * @param string $cadena1
@@ -422,7 +413,7 @@
             case 3: // Mostrar una partida.
                 $totalPartidas = count($juego);
                 echo "Ingrese un número de partida: \n";
-                $nroPartida = solicitarNumeroEntre(0, $totalPartidas - 1);//leemos el numero llamando a solicitarNumeroEntre
+                $nroPartida = solicitarNumeroEntre(0, $totalPartidas - 1); //leemos el numero llamando a solicitarNumeroEntre
                 mostrarPartida($juego, $nroPartida);
                 break;
             case 4: // Mostrar la primer partida ganada de un jugador.
@@ -436,9 +427,9 @@
                 }
                 break;
             case 5: // Mostrar las estadísticas de un jugador.
-                $jugador = solicitarJugador();
-                $resumen = resumenJugador($juego, $jugador);
-                mostrarResumen($resumen);
+                $jugador = solicitarJugador ();
+                $resumen = resumenJugador ($juego, $jugador);
+                mostrarResumen ($resumen);
                 break;
             case 6: // Mostrar listado de partidas ordenadas por jugador y por palabra.
                 echo "********************************** \n";
@@ -448,40 +439,11 @@
                 break;
             case 7: // Agregar una palabra de 5 letras a Wordix.
                 $palabra5Letras = leerPalabra5Letras();
-                $palabra = agregarPalabra($palabras, $palabra5Letras);//Guardamos el array actualizado
-                echo "Palabra " . $palabra5Letras . " agregada exitosamente! \n";
+                $palabras = agregarPalabra($palabras, $palabra5Letras); //Guardamos el array actualizado
                 break;
             case 8: // Salir del juego.
                 echo "Gracias por jugar";
                 break;
         }
     } while ($opcionMenu != 8); 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
