@@ -145,7 +145,7 @@
      * @return int
     */
     function partidaGanada ($coleccionPartida, $nombre) {
-        //int $n, $i, $j;
+        //int $n, $i, $indiceGanada;
         $n = count ($coleccionPartida);
         $i = 0;
         $indiceGanada = -1;
