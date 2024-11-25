@@ -170,7 +170,7 @@
     */
     function resumenJugador ($coleccionPartida, $nombre) {
         //int $n, $i, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6, $victorias, $partidas, $puntaje;
-        //float $porcentajeVictorias;
+        //int $porcentajeVictorias;
         //array $estadistica;
         $n = count($coleccionPartida);
         $i = 0;
