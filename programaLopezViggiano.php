@@ -305,6 +305,7 @@
     function elegirPalabra ($nombre, $coleccionPalabras, $historialPartidas) {
         //int $totalPalabras, $num
         //boolean $repetida
+        //string $palabraSeleccionada
         $totalPalabras = count ($coleccionPalabras);
         do {
             echo "Ingrese un numero de palabra: \n";
@@ -333,9 +334,11 @@
     function elegirPalabraAleatoria ($nombre, $coleccionPalabras, $historialPartidas) {
         //int $totalPalabras, $numAleatorio
         //boolean $repetida
+        //string $palabraSeleccionada
+
         $totalPalabras = count ($coleccionPalabras);
         do {
-            $numAleatorio = rand (0, $totalPalabras);
+            $numAleatorio = rand (0, $totalPalabras-1);
             $palabraSeleccionada = $coleccionPalabras[$numAleatorio];
             $repetida = palabraRepetida ($nombre, $palabraSeleccionada, $historialPartidas);
         } while ($repetida);
@@ -351,13 +354,23 @@
      * @return boolean
      */
     function palabraRepetida ($nombre, $palabra, $historial) {
+        //Int $i, $longitud
         // boolean $encontrada
+
+        $longitud = count($historial);
+        $i = 0;
         $encontrada = false;
-        foreach ($historial as $partida) {
-            if ($partida["jugador"] == $nombre && $partida["palabraWordix"] == $palabra) {
+
+
+        do {
+
+            if ($historial[$i]["jugador"] == $nombre && $historial[$i]["palabraWordix"] == $palabra) {
                 $encontrada = true;
             }
-        }
+            $i++;
+        } while ($i < $longitud && !$encontrada);
+            
+        
         return $encontrada;
     }
 
