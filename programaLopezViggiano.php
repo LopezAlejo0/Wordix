@@ -441,6 +441,7 @@
                 $primerPartidaGanada = partidaGanada($juego, $jugador);
                 if ($primerPartidaGanada == -1) {
                     echo $jugador . " no ganó ninguna partida \n";
+                    echo "********************************** \n";
                 }
                 else {
                     mostrarPartida ($juego, $primerPartidaGanada);//Reutilizamos mostrarPartida()
