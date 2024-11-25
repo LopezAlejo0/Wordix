@@ -303,7 +303,8 @@
     * @return string
     */
     function elegirPalabra ($nombre, $coleccionPalabras, $historialPartidas) {
-        //int $totalPalabras  
+        //int $totalPalabras, $num
+        //boolean $repetida
         $totalPalabras = count ($coleccionPalabras);
         do {
             echo "Ingrese un numero de palabra: \n";
@@ -330,6 +331,8 @@
      * @return String
      */
     function elegirPalabraAleatoria ($nombre, $coleccionPalabras, $historialPartidas) {
+        //int $totalPalabras, $numAleatorio
+        //boolean $repetida
         $totalPalabras = count ($coleccionPalabras);
         do {
             $numAleatorio = rand (0, $totalPalabras);
